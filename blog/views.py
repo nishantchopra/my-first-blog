@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.utils import timezone
 from .models import Post
 from .forms import PostForm
+from .forms import loginForm
 from django.shortcuts import redirect,get_object_or_404
+from django.contrib.auth import authenticate,logout
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -46,6 +48,23 @@ def post_new(request):
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
 
+def login(request):
+    if request.method=="POST":
+        form = loginForm(request.POST)
+        if form.is_valid():
+            u=request.POST['username'];
+            p=request.POST['password'];
+            user=authenticate(username=u,password=p)
+            if user:
+                return redirect('blog.views.post_list')
+    else:
+        form=loginForm()
+    return render(request, 'blog/log_in.html', {'form':form})
+	
+def logoutview(request):
+    logout(request)
+    posts=Post.objects.all();
+    return render(request,'blog/post_list.html',{'posts':posts})
 
 
 

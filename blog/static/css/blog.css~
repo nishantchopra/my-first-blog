@@ -11,7 +11,7 @@ body {
 
 
 .page-header {
-    background-color: #ff9400;
+    background-color: #12C0C9;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
 }
@@ -56,4 +56,9 @@ h1, h2, h3, h4 {
 
 .post h1 a, .post h1 a:visited {
     color: #000000;
+}
+
+log_in
+{
+	margin-right: 300px;
 }
