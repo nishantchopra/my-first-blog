@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import urlo
 from . import views
 urlpatterns = [
     url(r'^$', views.post_list),url(r'^nishant',views.post_list1),

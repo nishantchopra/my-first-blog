@@ -12,12 +12,14 @@
     <body>
         <div class="page-header">
 	  <h1><a href="/">Nishant's Blogs</a></h1>
+	  <h2><a href="/blog/register.html/">Register here</a></h2>
 
 
 
 	  {{ user }}
 	  {% if user.is_anonymous %}
 	  <a href="{% url 'django.contrib.auth.views.login' %}">login</a>
+	  <a href="{% url 'blog.views.register' %}">Register</a>
 	  {% else %}
 	  <a href="{% url 'django.contrib.auth.views.logout' %}">logout</a>
 	  {% endif %}

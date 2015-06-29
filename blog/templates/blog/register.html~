@@ -1,0 +1,22 @@
+<html>
+  <head>
+<title>blog</title>
+</head>
+<body>
+  <h1>Register yourself</h1>
+  {% if registered %}
+  blog says:<strong>thank you for registration.</strong>
+  <a href="/blog/">Return to the home page.</a><br />
+  {% else %}
+  blog says:<strong>Register here</strong><br />
+  <form id="user_form" method="post" action="/blog/register/" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+
+    {{ registered  }}
+
+    <input type="submit" name="submit" value="Register" />
+  </form>
+  {% endif %}
+</body>
+</html>
