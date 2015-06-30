@@ -138,7 +138,7 @@ def register_confirm(request, activation_key):
     if user.is_active:
         return render(request,'blog/post_list.html',{})
 
-        if user_profile.key_expires<timezone.now():
+    if user_profile.key_expires<timezone.now():
             return render(request,'blog/expires.html',{})
     user.is_active=True
     user.save()
